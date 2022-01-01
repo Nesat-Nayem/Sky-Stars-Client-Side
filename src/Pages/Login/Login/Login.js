@@ -1,9 +1,10 @@
-import { Button, TextField, Typography } from '@mui/material';
+import { Alert, Button, TextField, Typography } from '@mui/material';
 import { Box } from '@mui/system';
 import { ImGooglePlus3 } from 'react-icons/im'
 import { makeStyles } from '@mui/styles';
 import React, { useState } from 'react';
-import { Link } from 'react-router-dom';
+import { Link, useLocation, useNavigate } from 'react-router-dom';
+import useAuth from '../../hooks/useAuth'
 const imgUrl = 'https://i.postimg.cc/yYxVcWns/login.jpg'
 const styles = {
   paperContainer: {
@@ -42,13 +43,20 @@ const Login = () => {
   const classes = useStyles();
   const [email, setEmail] = useState('')
   const [password, setPassword] = useState('')
+  const { signInUser, googleSignIn, error } = useAuth()
+  const location = useLocation()
+  const navigate = useNavigate()
   const handleSubmit = (e) => {
     e.preventDefault()
-    console.log(email, password)
+    signInUser(email, password, location, navigate)
+    e.target.reset()
+  }
+  const handleGoogle = () => {
+    googleSignIn(location, navigate)
   }
   return (
     <Box style={styles.paperContainer} sx={{
-      height: '100vh', display: "flex", alignItems: "center", justifycontent: "center",
+      minHeight: '100vh', display: "flex", alignItems: "center", justifycontent: "center", pt: 10, pb: 5
     }} className='login' >
       < Box sx={{
         maxWidth: '500px', width: "90%", background: "#fff", margin: "auto", padding: "30px", borderRadius: "5px", textAlign: "center"
@@ -56,15 +64,14 @@ const Login = () => {
         <Typography variant="h4" sx={{ textAlign: "center", mb: 2 }}>Login Form</Typography>
         <form onSubmit={handleSubmit}>
           <TextField
-            id="outlined-textarea"
             label="Your Email"
             placeholder="Type Email.."
             required
+            type='email'
             sx={{ width: "100%", my: 1 }}
             onBlur={(e) => setEmail(e.target.value)}
           />
           <TextField
-            id="outlined-textarea"
             label="Password"
             placeholder="Type Password.."
             type="password"
@@ -76,7 +83,10 @@ const Login = () => {
         </form>
         <Typography sx={{ textAlign: "center", my: 2 }}>Already have an account? <Link to='/register'>Register</Link></Typography>
         <Typography sx={{ textAlign: "center", my: 2 }}>----------OR----------</Typography>
-        <Button style={styles.googleStyle} variant="contained"><ImGooglePlus3 style={{ fontSize: "20px", marginRight: "5px" }} />Google Sing In</Button>
+        <Button onClick={handleGoogle} style={styles.googleStyle} variant="contained"><ImGooglePlus3 style={{ fontSize: "20px", marginRight: "5px" }} />Google Sing In</Button>
+        {
+          error.length ? <Alert sx={{ mt: 2 }} severity="error">{error}</Alert> : ''
+        }
       </Box >
     </Box >
   );
