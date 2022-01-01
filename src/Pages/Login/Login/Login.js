@@ -2,13 +2,12 @@ import { Button, TextField, Typography } from '@mui/material';
 import { Box } from '@mui/system';
 import { ImGooglePlus3 } from 'react-icons/im'
 import { makeStyles } from '@mui/styles';
-
-import img from '../../../images/login.jpg'
 import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
+const imgUrl = 'https://i.postimg.cc/yYxVcWns/login.jpg'
 const styles = {
   paperContainer: {
-    backgroundImage: `url(${img})`,
+    backgroundImage: `url(${imgUrl})`,
     backgroundPosition: "center",
     backgroundSize: "cover",
     backgroundRepeat: "no-repeat"

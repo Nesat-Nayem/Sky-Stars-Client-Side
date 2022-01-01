@@ -1,8 +1,10 @@
-import React from 'react';
+import React, { useState } from 'react';
 import './Navbar.css'
 import { NavLink } from 'react-router-dom';
+import { FaBars } from 'react-icons/fa'
 
 const Navbar = () => {
+  const [isShow, setIsShow] = useState(false)
   return (
     <div className='header'>
       <div className="navbar custom-container">
@@ -10,7 +12,7 @@ const Navbar = () => {
           <h1>Sky <span>Stars</span></h1>
         </div>
         <nav>
-          <ul className='menu'>
+          <ul className={!isShow ? "menu" : 'menu show'}>
             <li>
               <NavLink to='/'>Home</NavLink>
             </li>
@@ -33,6 +35,9 @@ const Navbar = () => {
             </li>
           </ul>
         </nav>
+        <div onClick={() => setIsShow(!isShow)} className="hambarger">
+          <FaBars />
+        </div>
       </div>
     </div>
   );
