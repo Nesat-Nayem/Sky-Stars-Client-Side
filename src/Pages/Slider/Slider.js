@@ -14,25 +14,26 @@ const AutoPlaySwipeableViews = autoPlay(SwipeableViews);
 
 const images = [
   {
-    // label: 'San Francisco – Oakland Bay Bridge, United States',
+    label: 'Enjoy the best of both attractions, Ain Dubai and Inside sky stars,',
     imgPath:
-      'https://demo.yolotheme.com/tayta/wp-content/uploads/2021/02/background-02.jpg',
+      'https://ibaa-prod-images.azureedge.net/-/mediadh/dh/hospitality/burjalarab/ibaa-images/visitpagewhatsinside/a-guided-royal-tour-inside-burj-al-arab.jpg?h=515&w=916',
   },
   {
-    // label: 'Bird',
+    label: 'Discover the original home of luxury with a 90-minute tour, accompanied by a dedicated butler.',
     imgPath:
-      'https://demo.yolotheme.com/tayta/wp-content/uploads/2021/02/background-03.jpg',
+      'https://ibaa-prod-images.azureedge.net/-/mediadh/dh/hospitality/burjalarab/ibaa-images/visitpagewhatsinside/inside-burj-al-arab-boutique.jpg?h=515&w=916',
   },
   {
-    // label: 'Bali, Indonesia',
+    label: 'Visit Inside Sky stars Boutique and discover a range of curated and custom-branded souvenirs, products and merchandise.',
     imgPath:
-      'https://demo.yolotheme.com/tayta/wp-content/uploads/2021/02/background-06.jpg',
-  },
-  {
-    // label: 'Goč, Serbia',
-    imgPath:
-      'https://demo.yolotheme.com/tayta/wp-content/uploads/2021/02/background-01.jpg',
-  },
+      'https://ibaa-prod-images.azureedge.net/-/mediadh/dh/hospitality/burjalarab/ibaa-images/visitpagewhatsinside/history-and-architectural-design-burj-al-arab.jpg?h=515&w=916',
+  }
+  // ,
+  // {
+  //   label: 'Selecting your preferred time for the tour throughout the day, presents various culinary options to choose from',
+  //   imgPath:
+  //     'https://demo.yolotheme.com/tayta/wp-content/uploads/2021/02/background-01.jpg',
+  // },
 ];
 
 function SwipeableTextMobileStepper() {
@@ -60,8 +61,10 @@ function SwipeableTextMobileStepper() {
         sx={{
           display: 'flex',
           alignItems: 'center',
-          height: 1.5,
+          height: 50,
           pl: 2,
+          fontWeight: 'bold',
+          color: 'green',
           bgcolor: 'background.default',
         }}
       >
@@ -96,30 +99,30 @@ function SwipeableTextMobileStepper() {
         steps={maxSteps}
         position="static"
         activeStep={activeStep}
-      // nextButton={
-      //   <Button
-      //     size="small"
-      //     onClick={handleNext}
-      //     disabled={activeStep === maxSteps - 1}
-      //   >
-      //     Next
-      //     {theme.direction === 'rtl' ? (
-      //       <KeyboardArrowLeft />
-      //     ) : (
-      //       <KeyboardArrowRight />
-      //     )}
-      //   </Button>
-      // }
-      // backButton={
-      //   <Button size="small" onClick={handleBack} disabled={activeStep === 0}>
-      //     {theme.direction === 'rtl' ? (
-      //       <KeyboardArrowRight />
-      //     ) : (
-      //       <KeyboardArrowLeft />
-      //     )}
-      //     Back
-      //   </Button>
-      // }
+      nextButton={
+        <Button
+          size="small"
+          onClick={handleNext}
+          disabled={activeStep === maxSteps - 1}
+        >
+          Next
+          {theme.direction === 'rtl' ? (
+            <KeyboardArrowLeft />
+          ) : (
+            <KeyboardArrowRight />
+          )}
+        </Button>
+      }
+      backButton={
+        <Button size="small" onClick={handleBack} disabled={activeStep === 0}>
+          {theme.direction === 'rtl' ? (
+            <KeyboardArrowRight />
+          ) : (
+            <KeyboardArrowLeft />
+          )}
+          Back
+        </Button>
+      }
       />
     </Box>
   );
