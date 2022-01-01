@@ -1,0 +1,46 @@
+.logo h1{
+  font-size: 50px;
+  font-weight: 700;
+  font-family: 'Tangerine', cursive;
+}
+.logo h1 span{
+  color: #27b1fc;
+}
+.header{
+  background-color: #fff;
+  padding: 10px 0;
+  position: fixed;
+  width: 100%;
+  top: 0;
+  z-index: 9999;
+}
+.navbar{
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+.navbar nav{
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.navbar nav ul{
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.navbar nav ul.menu{
+  gap: 20px;
+}
+.navbar nav ul.menu li a{
+  color: #333;
+  font-weight: 500;
+}
+.navbar nav ul.login-regi li a{
+  display: inline-block;
+  padding: 8px 15px;
+  background-color: #27b1fc;
+  color: #fff;
+  border-radius: 30px;
+  margin-left: 20px;
+}
