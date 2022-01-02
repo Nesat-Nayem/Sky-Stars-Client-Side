@@ -10,7 +10,7 @@ const About = () => {
  
 
   return (
-    <div maxWidth="sm" sx={{ flexGrow: 1 }}>
+    <div maxwidth="sm" sx={{ flexGrow: 1 }}>
      
       <Container className='about-section' >
         <Grid container spacing={2} >
