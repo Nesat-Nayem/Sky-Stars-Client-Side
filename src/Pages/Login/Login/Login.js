@@ -82,7 +82,10 @@ const Login = () => {
           <Button className={classes.root} sx={{ mt: 1 }} type="submit" variant="contained">Login</Button>
         </form>
         <Typography sx={{ textAlign: "center", my: 2 }}>Already have an account? <Link to='/register'>Register</Link></Typography>
-        <Typography sx={{ textAlign: "center", my: 2 }}>----------OR----------</Typography>
+        <Typography sx={{ textAlign: "center", my: 2 }}
+        
+        >----------OR----------</Typography>
+        
         <Button onClick={handleGoogle} style={styles.googleStyle} variant="contained"><ImGooglePlus3 style={{ fontSize: "20px", marginRight: "5px" }} />Google Sing In</Button>
         {
           error.length ? <Alert sx={{ mt: 2 }} severity="error">{error}</Alert> : ''
