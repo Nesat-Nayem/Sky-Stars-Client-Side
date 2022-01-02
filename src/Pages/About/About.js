@@ -1,8 +1,9 @@
 import React from 'react';
 import Container from '@mui/material/Container';
 import Typography from '@mui/material/Typography';
-import img from '../../images/bg-page-title.jpg'
 import Grid from '@mui/material/Grid';
+import img from '../../images/bg-page-title.jpg'
+import banner1 from '../../images/banner01.jpg'
 import './About.css';
 
 const About = () => {
@@ -16,29 +17,32 @@ const About = () => {
 
 
   return (
-    <div maxWidth="sm" >
+    <div maxWidth="sm"  sx={{ flexGrow: 1 }}>
       <div style={aboutBanner}>
         <Typography className='about-title'>About Us</Typography>
       </div>
 
-      <Container >
-        <Grid container spacing={2}>
-          <Grid item xs={12} md={6}>
+      <Container className='about-section' >
+        <Grid container spacing={2} >
+          <Grid item xs={12} md={6} className='about-banner'>
+            <img src={banner1} alt="" />
             <Typography>
-              ABOUT US
-            </Typography>
-            <Typography>
-              Since 2001
-              We Are Working In Your Service
+
             </Typography>
           </Grid>
-          <Grid item xs={12} md={6}>
-            <Typography>
-              ABOUT US
+          <Grid item xs={12} md={6} sx={{lineHeight:"40px"}}>
+            <Typography variant="h6" sx={{ my: 3, fontSize: 20, fontWeight: 500, color: '#b9a25f',    letterSpacing: '10px'}}>
+            ABOUT US
             </Typography>
-            <Typography>
-              Since 2001
+            <Typography  sx={{ my: 3, fontSize: 60, fontWeight: 700 ,fontFamily:""}} className='about-text'>
+              Since 2002
               We Are Working In Your Service
+            </Typography>
+            <Typography  sx={{lineSpace:"20px"}}>
+              Staying calm, composed and maintaining strong self esteem in today’s tough environment can be difficult but is not impossible if you follow a few simple guidelines.
+            </Typography>
+            <Typography  >
+              Everything and everyone else around you can affect your self esteem. Other people can deliberately or inadvertently damage your self image. Unchecked people and circumstances can ultimately destroy your
             </Typography>
           </Grid>
 
