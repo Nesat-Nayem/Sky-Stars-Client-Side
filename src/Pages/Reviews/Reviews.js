@@ -1,12 +1,20 @@
 import React, { useEffect, useState } from 'react';
 import { Swiper, SwiperSlide } from 'swiper/react';
-import Rating from 'react-rating';
+import Container from '@mui/material/Container';
+import Typography from '@mui/material/Typography';
+import CardMedia from '@mui/material/CardMedia';
+import img from '../../images/client.jpg'
+
+
+
+// import Rating from 'react-rating';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faStar } from '@fortawesome/free-solid-svg-icons'
-import 'swiper/css/effect-fade';
+// import 'swiper/css/effect-fade';
 
 import 'swiper/css';
 import './Reviews.css'
+import { Grid } from '@mui/material';
 
 
 const Reviews = () => {
@@ -24,56 +32,58 @@ const Reviews = () => {
 
     return (
 
-        <div className='container my-5 review-container'>
+        <Container className='review-container'>
             <h1>
                 Happy Client testimonials
             </h1>
+            <Grid container spacing={2} sx={{lineHeight: "40px"}}>
+                <Grid item xs={12} md={4}>
+                    <CardMedia
+                        sx={{ width: "100px", height: "100px", borderRadius: "70%" }}
+                        component="img"
+                        image={img}
+                        alt="Paella dish"
+                    />
+                    <Typography>
+                        Jhon Doe
+                    </Typography>
+                    <Typography>
+                        Customer reviews build something known as social proof, a phenomenon that states people are influenced by those around them.
+                    </Typography>
+                </Grid>
+                <Grid item xs={12} sm={4} >
+                    <CardMedia
+                        sx={{ width: "100px", height: "100px", borderRadius: "70%" }}
+                        component="img"
+                        height="50"
+                        image={img}
+                        alt="Paella dish"
+                    />
+                    <Typography>
+                        Jhon Doe
+                    </Typography>
+                    <Typography>
+                        Customer reviews build something known as social proof, a phenomenon that states people are influenced by those around them.
+                    </Typography>
+                </Grid>
+                <Grid item xs={12} sm={4}>
+                    <CardMedia
+                        sx={{ width: "100px", height: "100px", borderRadius: "70%" }}
+                        component="img"
+                        image={img}
+                        alt="Paella dish"
+                    />
+                    <Typography>
+                        Jhon Doe
+                    </Typography>
+                    <Typography>
+                        Customer reviews build something known as social proof, a phenomenon that states people are influenced by those around them.
+                    </Typography>
+                </Grid>
+            </Grid>
 
-            <Swiper
-                spaceBetween={50}
-                slidesPerView={3}
-                onSlideChange={() => console.log('slide change')}
-                onSwiper={(swiper) => console.log(swiper)}
-               
-            >
 
-                        <SwiperSlide effect="fade"
-                            // key={review._id}
-                            className='swiper-container'
-                            breakpoints={{
-                                640: {
-                                    width: 640,
-                                    slidesPerView: 1,
-                                },
-                                768: {
-                                    width: 768,
-                                    slidesPerView: 2,
-                                },
-                            }}
-                        >
-                            <div className='review-item'>
-                                <img className='img-fluid'  alt="" />
-                                <h6>
-                                   <h2>Farzana pomy</h2>
-                                </h6>
-                                <p>
-                                <h2>Service</h2>
-                                </p>
-                                <p>
-                                    Lorem ipsum dolor sit amet consectetur adipisicing elit. Doloremque maiores quam sed et recusandae ducimus eligendi magni. Molestiae esse rerum nihil expedita, eaque amet, quisquam, similique dicta repellendus id delectus.
-                                    </p>
-
-                                <Rating readonly
-                                    // initialRating={ratting}
-                                    fullSymbol={element1}
-                                    emptySymbol={element2}
-                                ></Rating>
-                            </div>
-                        </SwiperSlide>
-                    )
-
-            </Swiper>
-        </div>
+        </Container>
     );
 };
 
