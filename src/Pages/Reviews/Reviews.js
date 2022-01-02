@@ -30,7 +30,7 @@ const Reviews = () => {
 
         <Container className='review-container'>
             <h1>
-                Happy Client testimonials
+                Happy Client Testimonials
             </h1>
 
            
