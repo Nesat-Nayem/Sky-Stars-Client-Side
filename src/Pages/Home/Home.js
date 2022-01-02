@@ -1,15 +1,17 @@
 import React from 'react';
-import About from '../About/About';
 import Slider from '../Slider/Slider'
 import Navbar from '../Navbar/Navbar'
+import Footer from '../Footer/Footer';
 
 const Home = () => {
     return (
         <div>
             <Navbar />
             <Slider></Slider>
-            <About />
+            <Footer />
         </div>
+
+        
     );
 };
 

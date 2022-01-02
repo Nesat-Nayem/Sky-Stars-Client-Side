@@ -1,131 +1,98 @@
-import * as React from 'react';
-import { useTheme } from '@mui/material/styles';
-import Box from '@mui/material/Box';
-import MobileStepper from '@mui/material/MobileStepper';
-import Paper from '@mui/material/Paper';
-import Typography from '@mui/material/Typography';
-import Button from '@mui/material/Button';
-import KeyboardArrowLeft from '@mui/icons-material/KeyboardArrowLeft';
-import KeyboardArrowRight from '@mui/icons-material/KeyboardArrowRight';
-import SwipeableViews from 'react-swipeable-views';
-import { autoPlay } from 'react-swipeable-views-utils';
+import React from 'react';
+import { Swiper, SwiperSlide } from "swiper/react";
+import { Button } from '@mui/material';
+// Import Swiper styles
+import "swiper/css";
+import "swiper/css/effect-fade"
+import "swiper/css/navigation"
+import "swiper/css/pagination"
 
-const AutoPlaySwipeableViews = autoPlay(SwipeableViews);
+import './slider.css'
 
-const images = [
-  {
-    label: 'Enjoy the best of both attractions, Ain Dubai and Inside sky stars,',
-    imgPath:
-      'https://ibaa-prod-images.azureedge.net/-/mediadh/dh/hospitality/burjalarab/ibaa-images/visitpagewhatsinside/a-guided-royal-tour-inside-burj-al-arab.jpg?h=515&w=916',
+//image
+import banner1 from '../../images/banner/1.jpg'
+import banner2 from '../../images/banner/2.jpg'
+import banner3 from '../../images/banner/3.jpg'
+import banner4 from '../../images/banner/4.jpg'
+
+import SwiperCore, {
+  EffectFade, Navigation, Autoplay
+} from 'swiper';
+SwiperCore.use([EffectFade, Navigation, Autoplay]);
+export { banner1, banner2, banner3, banner4 }
+const styles = {
+  primary: {
+    background: 'linear-gradient(45deg, #27b1fc 30%, #57e2ff 90%)',
+    border: 0,
+    borderRadius: '30px',
+    boxShadow: '0 3px 5px 2px rgba(255, 105, 135, .3)',
+    color: 'white',
+    height: 48,
+    padding: '0 30px',
+    margin: "auto",
+    marginRight: "5px"
   },
-  {
-    label: 'Discover the original home of luxury with a 90-minute tour, accompanied by a dedicated butler.',
-    imgPath:
-      'https://ibaa-prod-images.azureedge.net/-/mediadh/dh/hospitality/burjalarab/ibaa-images/visitpagewhatsinside/inside-burj-al-arab-boutique.jpg?h=515&w=916',
+  root: {
+    background: 'linear-gradient(45deg, #FE6B8B 30%, #FF8E53 90%)',
+    border: 0,
+    borderRadius: '30px',
+    boxShadow: '0 3px 5px 2px rgba(255, 105, 135, .3)',
+    color: 'white',
+    height: 48,
+    padding: '0 30px',
+    marginLeft: '5px'
   },
-  {
-    label: 'Visit Inside Sky stars Boutique and discover a range of curated and custom-branded souvenirs, products and merchandise.',
-    imgPath:
-      'https://ibaa-prod-images.azureedge.net/-/mediadh/dh/hospitality/burjalarab/ibaa-images/visitpagewhatsinside/history-and-architectural-design-burj-al-arab.jpg?h=515&w=916',
-  }
-  // ,
-  // {
-  //   label: 'Selecting your preferred time for the tour throughout the day, presents various culinary options to choose from',
-  //   imgPath:
-  //     'https://demo.yolotheme.com/tayta/wp-content/uploads/2021/02/background-01.jpg',
-  // },
-];
-
-function SwipeableTextMobileStepper() {
-  const theme = useTheme();
-  const [activeStep, setActiveStep] = React.useState(0);
-  const maxSteps = images.length;
-
-  const handleNext = () => {
-    setActiveStep((prevActiveStep) => prevActiveStep + 1);
-  };
-
-  const handleBack = () => {
-    setActiveStep((prevActiveStep) => prevActiveStep - 1);
-  };
-
-  const handleStepChange = (step) => {
-    setActiveStep(step);
-  };
-
+};
+const Slider = () => {
   return (
-    <Box sx={{ flexGrow: 1 }}>
-      <Paper
-        square
-        elevation={0}
-        sx={{
-          display: 'flex',
-          alignItems: 'center',
-          height: 50,
-          pl: 2,
-          fontWeight: 'bold',
-          color: 'green',
-          bgcolor: 'background.default',
-        }}
-      >
-        <Typography>{images[activeStep].label}</Typography>
-      </Paper>
-      <AutoPlaySwipeableViews
-        axis={theme.direction === 'rtl' ? 'x-reverse' : 'x'}
-        index={activeStep}
-        onChangeIndex={handleStepChange}
-        enableMouseEvents
-      >
-        {images.map((step, index) => (
-          <div key={step.label}>
-            {Math.abs(activeStep - index) <= 2 ? (
-              <Box
-                component="img"
-                sx={{
-                  height: '100%',
-                  display: 'block',
-                  maxWidth: '100%',
-                  overflow: 'hidden',
-                  width: '100%',
-                }}
-                src={step.imgPath}
-                alt={step.label}
-              />
-            ) : null}
+    <div className='banner'>
+      <Swiper autoplay={{
+        "delay": 3000,
+        "disableOnInteraction": false
+      }} spaceBetween={30} effect={'fade'} loop={true} navigation={true} pagination={{
+        "clickable": true
+      }} className="mySwiper">
+        <SwiperSlide className='overlay'>
+          <img style={{ width: "100%" }} src={banner1} alt='' />
+          <div className='slider-text'>
+            <h1>Get a Great Refreshment By Visiting <br /> <span>The Sky Star</span></h1>
+            <div style={{ marginTop: "20px" }} className="hero-btn">
+              <Button style={styles.primary} variant="contained">Book Now</Button>
+              <Button style={styles.root} variant="contained">Contact</Button>
+            </div>
           </div>
-        ))}
-      </AutoPlaySwipeableViews>
-      <MobileStepper
-        steps={maxSteps}
-        position="static"
-        activeStep={activeStep}
-      nextButton={
-        <Button
-          size="small"
-          onClick={handleNext}
-          disabled={activeStep === maxSteps - 1}
-        >
-          Next
-          {theme.direction === 'rtl' ? (
-            <KeyboardArrowLeft />
-          ) : (
-            <KeyboardArrowRight />
-          )}
-        </Button>
-      }
-      backButton={
-        <Button size="small" onClick={handleBack} disabled={activeStep === 0}>
-          {theme.direction === 'rtl' ? (
-            <KeyboardArrowRight />
-          ) : (
-            <KeyboardArrowLeft />
-          )}
-          Back
-        </Button>
-      }
-      />
-    </Box>
+        </SwiperSlide>
+        <SwiperSlide className='overlay'>
+          <img style={{ width: "100%" }} src={banner2} alt='' />
+          <div className='slider-text'>
+            <h1>Our client eticfaction is Our <br /> <span>Achivement</span></h1>
+            <div style={{ marginTop: "20px" }} className="hero-btn">
+              <Button style={styles.root} variant="contained">Contact</Button>
+            </div>
+          </div>
+        </SwiperSlide>
+        <SwiperSlide className='overlay'>
+          <img style={{ width: "100%" }} src={banner3} alt='' />
+          <div className='slider-text'>
+            <h1>Get a Great Refreshment By Visiting <br /> <span>The Sky Star</span></h1>
+            <div style={{ marginTop: "20px" }} className="hero-btn">
+              <Button style={styles.primary} variant="contained">Book Now</Button>
+              <Button style={styles.root} variant="contained">Contact</Button>
+            </div>
+          </div>
+        </SwiperSlide>
+        <SwiperSlide className='overlay'>
+          <img style={{ width: "100%" }} src={banner4} alt='' />
+          <div className='slider-text'>
+            <h1>Our client eticfaction is Our <br /> <span>Achivement</span></h1>
+            <div style={{ marginTop: "20px" }} className="hero-btn">
+              <Button style={styles.root} variant="contained">Contact</Button>
+            </div>
+          </div>
+        </SwiperSlide>
+      </Swiper>
+    </div>
   );
-}
+};
 
-export default SwipeableTextMobileStepper;
+export default Slider;
