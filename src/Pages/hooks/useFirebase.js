@@ -9,7 +9,7 @@ const googleProvider = new GoogleAuthProvider()
 const useFirebase = () => {
   const [user, setUser] = useState({})
   const [error, setError] = useState('')
-  const [success, setSuccess] = useState(true)
+  const [success, setSuccess] = useState(false)
   const [isLoading, setIsLoading] = useState(false)
 
   const googleSignIn = (location, navigate) => {
