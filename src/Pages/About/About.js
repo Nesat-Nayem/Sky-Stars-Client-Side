@@ -2,7 +2,6 @@ import React from 'react';
 import Container from '@mui/material/Container';
 import Typography from '@mui/material/Typography';
 import Grid from '@mui/material/Grid';
-import img from '../../images/bg-page-title.jpg'
 import banner1 from '../../images/banner01.jpg'
 import './About.css';
 
@@ -15,7 +14,7 @@ const About = () => {
       <Container className='about-section' >
         <Grid container spacing={2} >
           <Grid item xs={12} md={6} className='about-banner'>
-            <img src={banner1} alt="" />
+            <img src={banner1} alt="" className='img-fluid'/>
             <Typography>
 
             </Typography>
