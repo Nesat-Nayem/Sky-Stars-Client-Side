@@ -7,21 +7,11 @@ import banner1 from '../../images/banner01.jpg'
 import './About.css';
 
 const About = () => {
-  const aboutBanner = {
-    background: `url(${img})`,
-    backgroundColor: 'rgba(45, 58, 74, 0.5)',
-    backgroundBlendMode: 'darken, luminosity',
-    height: '70vh',
-    // marginTop: 175
-  }
-
+ 
 
   return (
-    <div maxWidth="sm"  sx={{ flexGrow: 1 }}>
-      <div style={aboutBanner}>
-        <Typography className='about-title'>About Us</Typography>
-      </div>
-
+    <div maxWidth="sm" sx={{ flexGrow: 1 }}>
+     
       <Container className='about-section' >
         <Grid container spacing={2} >
           <Grid item xs={12} md={6} className='about-banner'>
@@ -30,15 +20,15 @@ const About = () => {
 
             </Typography>
           </Grid>
-          <Grid item xs={12} md={6} sx={{lineHeight:"40px"}}>
-            <Typography variant="h6" sx={{ my: 3, fontSize: 20, fontWeight: 500, color: '#b9a25f',    letterSpacing: '10px'}}>
-            ABOUT US
+          <Grid item xs={12} md={6} sx={{ lineHeight: "40px" }}>
+            <Typography variant="h1" sx={{ my: 3, fontSize: 20, fontWeight: 500, color: '#b9a25f', letterSpacing: '10px' }}>
+              ABOUT US
             </Typography>
-            <Typography  sx={{ my: 3, fontSize: 60, fontWeight: 700 ,fontFamily:""}} className='about-text'>
+            <Typography sx={{ my: 3, fontSize: 60, fontWeight: 700, fontFamily: "" }} className='about-text'>
               Since 2002
               We Are Working In Your Service
             </Typography>
-            <Typography  sx={{lineSpace:"20px"}}>
+            <Typography sx={{ lineSpace: "20px" }}>
               Staying calm, composed and maintaining strong self esteem in today’s tough environment can be difficult but is not impossible if you follow a few simple guidelines.
             </Typography>
             <Typography  >
