@@ -8,6 +8,7 @@ import {
 import Login from './Pages/Login/Login/Login';
 import Register from './Pages/Login/Register/Register';
 import { AuthProvider } from './AuthProvider/AuthProvider';
+import NotFound from './Pages/NotFound/NotFound';
 
 
 function App() {
@@ -19,6 +20,8 @@ function App() {
           <Route path='/home' element={<Home />} />
           <Route path='login' element={<Login />} />
           <Route path='register' element={<Register />} />
+          <Route path="*" element={<NotFound />}>
+          </Route>
         </Routes>
       </BrowserRouter>
     </AuthProvider>
