@@ -1,9 +1,10 @@
-import { Button, TextField, Typography } from '@mui/material';
+import { Alert, Button, TextField, Typography } from '@mui/material';
 import { Box } from '@mui/system';
 import { ImGooglePlus3 } from 'react-icons/im'
 import { makeStyles } from '@mui/styles';
 import React, { useState } from 'react';
-import { Link } from 'react-router-dom';
+import { Link, useLocation, useNavigate } from 'react-router-dom';
+import useAuth from '../../hooks/useAuth';
 const imgUrl = 'https://i.postimg.cc/yYxVcWns/login.jpg'
 const styles = {
   paperContainer: {
@@ -43,13 +44,23 @@ const Register = () => {
   const [email, setEmail] = useState('')
   const [password, setPassword] = useState('')
   const [name, setName] = useState('')
+  const { googleSignIn, createUser, error, success } = useAuth()
+  const location = useLocation()
+  const navigate = useNavigate()
+
   const handleSubmit = (e) => {
     e.preventDefault()
-    console.log(email, password)
+    createUser(email, password, name)
+    if (success && !error.length) {
+      e.target.reset()
+    }
+  }
+  const handleGoogle = () => {
+    googleSignIn(location, navigate)
   }
   return (
     <Box style={styles.paperContainer} sx={{
-      height: '100vh', display: "flex", alignItems: "center", justifycontent: "center",
+      minHeight: '100vh', display: "flex", alignItems: "center", justifycontent: "center", pt: 10, pb: 5
     }} className='login' >
       < Box sx={{
         maxWidth: '500px', width: "90%", background: "#fff", margin: "auto", padding: "30px", borderRadius: "5px", textAlign: "center"
@@ -57,7 +68,6 @@ const Register = () => {
         <Typography variant="h4" sx={{ textAlign: "center", mb: 2 }}>Registration Form</Typography>
         <form onSubmit={handleSubmit}>
           <TextField
-            id="outlined-textarea"
             label="Your Name"
             placeholder="Type Name.."
             type='text'
@@ -66,7 +76,6 @@ const Register = () => {
             onBlur={(e) => setName(e.target.value)}
           />
           <TextField
-            id="outlined-textarea"
             label="Your Email"
             placeholder="Type Email.."
             type='email'
@@ -75,7 +84,6 @@ const Register = () => {
             onBlur={(e) => setEmail(e.target.value)}
           />
           <TextField
-            id="outlined-textarea"
             label="Password"
             placeholder="Type Password.."
             type="password"
@@ -87,7 +95,13 @@ const Register = () => {
         </form>
         <Typography sx={{ textAlign: "center", my: 2 }}>New Here? <Link to='/login'>Login</Link></Typography>
         <Typography sx={{ textAlign: "center", my: 2 }}>----------OR----------</Typography>
-        <Button style={styles.googleStyle} variant="contained"><ImGooglePlus3 style={{ fontSize: "20px", marginRight: "5px" }} />Google Sing In</Button>
+        <Button onClick={handleGoogle} style={styles.googleStyle} variant="contained"><ImGooglePlus3 style={{ fontSize: "20px", marginRight: "5px" }} />Google Sing In</Button>
+        {
+          error.length ? <Alert sx={{ mt: 2 }} severity="error">{error}</Alert> : ''
+        }
+        {
+          success ? <Alert sx={{ mt: 2 }} onClose={() => { }}> Successfully created user</Alert> : ''
+        }
       </Box >
     </Box >
   );
