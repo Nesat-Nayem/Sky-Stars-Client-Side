@@ -19,7 +19,7 @@ import SwiperCore, {
   EffectFade, Navigation, Autoplay
 } from 'swiper';
 SwiperCore.use([EffectFade, Navigation, Autoplay]);
-
+export { banner1, banner2, banner3, banner4 }
 const styles = {
   primary: {
     background: 'linear-gradient(45deg, #27b1fc 30%, #57e2ff 90%)',
