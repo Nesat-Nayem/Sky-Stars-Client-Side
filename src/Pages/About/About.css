@@ -1,0 +1,6 @@
+.about-title {
+    display: flex;
+    justify-content: center;
+    align-items:baseline;
+    margin-top: 540%;
+}
