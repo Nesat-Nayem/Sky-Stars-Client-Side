@@ -6,10 +6,12 @@ import Review from '../Reviews/Reviews'
 const Home = () => {
     return (
         <div>
+            
             <Navbar />
             <Slider></Slider>
             <Review></Review>
             <About />
+
         </div>
     );
 };
