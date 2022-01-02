@@ -10,6 +10,8 @@ const Home = () => {
             <Slider></Slider>
             <About />
         </div>
+
+        
     );
 };
 
