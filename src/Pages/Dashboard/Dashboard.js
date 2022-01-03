@@ -28,9 +28,14 @@ const Dashboard = (props) => {
       <Toolbar />
       <Divider />
       <List>
-        <NavLink to='orderedproducts'>
+        <NavLink to='MyOrder'>
           <ListItem sx={{ fontSize: "20px", color: "#333" }}>
-            Ordered Products
+            My Order
+          </ListItem>
+        </NavLink>
+        <NavLink to='AllOrder'>
+          <ListItem sx={{ fontSize: "20px", color: "#333" }}>
+            All Order
           </ListItem>
         </NavLink>
         <NavLink to='addservice'>
