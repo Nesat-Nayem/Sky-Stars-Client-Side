@@ -15,6 +15,7 @@ import AddProduct from './Pages/Dashboard/AddProduct/AddProduct';
 import AddReview from './Pages/Dashboard/AddReview/AddReview';
 import AllUser from './Pages/Dashboard/AllUser/AllUser';
 import AllProduct from './Pages/Dashboard/AllProduct/AllProduct';
+import DefaultDashboard from './Pages/Dashboard/DefaultDashboard';
 
 
 function App() {
@@ -26,13 +27,16 @@ function App() {
           <Route path='/home' element={<Home />} />
           <Route path='login' element={<Login />} />
           <Route path='register' element={<Register />} />
+
           <Route path='/dashboard' element={<Dashboard />}>
+            <Route exact path='/dashboard' element={<DefaultDashboard />}></Route >
             <Route path='orderedproducts' element={<Orders />} />
             <Route path='addservice' element={<AddProduct />} />
             <Route path='addreview' element={<AddReview />} />
             <Route path='alluser' element={<AllUser />} />
             <Route path='allservice' element={<AllProduct />} />
           </Route>
+
           <Route path="*" element={<NotFound />}></Route>
         </Routes>
       </BrowserRouter>
