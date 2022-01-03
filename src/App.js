@@ -17,6 +17,7 @@ import AllUser from './Pages/Dashboard/AllUser/AllUser';
 import AllProduct from './Pages/Dashboard/AllProduct/AllProduct';
 import PrivateRoute from '../src/PrivateRoute/PrivateRoute';
 import ServiceDetails from './Pages/ServiceDetails/ServiceDetails';
+import DefaultDashboard from './Pages/Dashboard/DefaultDashboard';
 
 
 function App() {
@@ -28,13 +29,10 @@ function App() {
           <Route path='/home' element={<Home />} />
           <Route path='login' element={<Login />} />
           <Route path='register' element={<Register />} />
-          <Route path='/dashboard' element={<PrivateRoute>
-            <Dashboard />
-          </PrivateRoute>}>
-            <Route
-              index
-              element={<Orders />}
-            />
+            
+          <Route path='/dashboard' element={<PrivateRoute><Dashboard /></PrivateRoute>}>
+            
+            <Route exact path='/dashboard' element={<DefaultDashboard />}></Route >
             <Route path='orderedproducts' element={<Orders />} />
             <Route path='addservice' element={<AddProduct />} />
             <Route path='addreview' element={<AddReview />} />

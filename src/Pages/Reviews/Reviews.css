@@ -21,4 +21,7 @@
     font-size: 40px;
     margin: 70px auto;
 }
-
+.review-card{
+    border: gray;
+    border-radius: 25px;
+}

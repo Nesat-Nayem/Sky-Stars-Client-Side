@@ -8,7 +8,7 @@ import List from '@mui/material/List';
 import Typography from '@mui/material/Typography';
 import ListItem from '@mui/material/ListItem';
 import './Dashboard.css'
-import { NavLink, Outlet } from 'react-router-dom';
+import { NavLink, Outlet, Link } from 'react-router-dom';
 import { Button } from '@mui/material';
 import useAuth from '../hooks/useAuth';
 
@@ -69,9 +69,16 @@ const Dashboard = () => {
               All Services
             </ListItem>
           </NavLink>
-          <ListItem sx={{ fontSize: "20px", color: "#333" }}>
-            <Button onClick={singOutUser}>Log Out</Button>
-          </ListItem>
+
+          <Box sx={{ marginLeft: '15px' }}>
+            <Link to='/'>
+              <Button variant="contained" style={{ backgroundColor: '#F63E7B' }}>Home</Button> </Link>
+            <br />
+
+            <Button style={{ backgroundColor: '#F63E7B', marginTop: '10px' }} onClick={singOutUser} variant="contained">LogOut</Button>
+          </Box>
+
+
 
         </List>
       </Drawer>
