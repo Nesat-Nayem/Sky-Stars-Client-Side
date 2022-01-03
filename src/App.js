@@ -14,6 +14,8 @@ import AddProduct from './Pages/Dashboard/AddProduct/AddProduct';
 import AddReview from './Pages/Dashboard/AddReview/AddReview';
 import AllUser from './Pages/Dashboard/AllUser/AllUser';
 import AllProduct from './Pages/Dashboard/AllProduct/AllProduct';
+import PrivateRoute from '../src/PrivateRoute/PrivateRoute';
+import ServiceDetails from './Pages/ServiceDetails/ServiceDetails';
 import DefaultDashboard from './Pages/Dashboard/DefaultDashboard';
 import AllOrders from './Pages/Dashboard/AllOrders/AllOrders';
 import MyOrder from './Pages/Dashboard/MyOrder/MyOrder';
@@ -28,8 +30,9 @@ function App() {
           <Route path='/home' element={<Home />} />
           <Route path='login' element={<Login />} />
           <Route path='register' element={<Register />} />
-
-          <Route path='/dashboard' element={<Dashboard />}>
+            
+          <Route path='/dashboard' element={<PrivateRoute><Dashboard /></PrivateRoute>}>
+            
             <Route exact path='/dashboard' element={<DefaultDashboard />}></Route >
             <Route path='AllOrder' element={<AllOrders />} />
             <Route path='MyOrder' element={<MyOrder />} />
@@ -38,7 +41,7 @@ function App() {
             <Route path='alluser' element={<AllUser />} />
             <Route path='allservice' element={<AllProduct />} />
           </Route>
-
+          <Route path='services/:serviceId' element={<ServiceDetails />} />
           <Route path="*" element={<NotFound />}></Route>
         </Routes>
       </BrowserRouter>

@@ -6,16 +6,21 @@ import useAuth from '../../hooks/useAuth';
 const MyOrder = () => {
     const [myOrders, setMyOrders] = useState([]);
     const [isDeleted, setIsDeleted] = useState(null);
+
     const { user } = useAuth();
-    const currentEmail = user?.email;
+    // const currentEmail = user?.email;
+    // console.log(currentEmail)
 
 
     // get data from database
     useEffect(() => {
-        fetch(`http://localhost:5000/${currentEmail}`)
+        fetch(`http://localhost:5000/MyOrders/${user.email}`)
             .then(res => res.json())
             .then(data => setMyOrders(data))
-    }, [isDeleted, currentEmail])
+    }, [isDeleted, user])
+
+    console.log(myOrders)
+
 
     // delete
     const handleDelete = (id) => {

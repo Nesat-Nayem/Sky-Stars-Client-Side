@@ -6,15 +6,15 @@ import banner1 from '../../images/banner01.jpg'
 import './About.css';
 
 const About = () => {
- 
+
 
   return (
     <div maxwidth="sm" sx={{ flexGrow: 1 }}>
-     
+
       <Container className='about-section' >
         <Grid container spacing={2} >
           <Grid item xs={12} md={6} className='about-banner'>
-            <img src={banner1} alt="" className='img-fluid'/>
+            <img src={banner1} alt="" className='img-fluid' />
             <Typography>
 
             </Typography>
