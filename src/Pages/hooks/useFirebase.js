@@ -11,15 +11,21 @@ const useFirebase = () => {
   const [error, setError] = useState('')
   const [success, setSuccess] = useState(false)
   const [isLoading, setIsLoading] = useState(false)
+  const [admin, setAdmin] = useState(false);
+
 
   const googleSignIn = (location, navigate) => {
     setIsLoading(true)
     signInWithPopup(auth, googleProvider)
       .then(result => {
-        setUser(result.user)
+        const user = result.user;
+        setUser(user)
         setError('')
         setSuccess(true)
         navigate(location.state?.from || '/')
+
+        // save user info into database
+        userInfoSaveDB(user.email, user.displayName, "PUT")
       })
       .catch(error => {
         setError(error.message)
@@ -45,6 +51,11 @@ const useFirebase = () => {
         setUser(result.user)
         setError('')
         setSuccess(true)
+
+
+        // save user info into database
+        userInfoSaveDB(email, name, "POST")
+
         setuserName(name)
       })
       .catch(error => {
@@ -58,17 +69,15 @@ const useFirebase = () => {
   const signInUser = (email, password, location, navigate) => {
     setIsLoading(true)
     signInWithEmailAndPassword(auth, email, password)
-      .then(result => {
-        setUser(result.user)
-        setError('')
-        setSuccess(true)
-        navigate(location.state?.from)
+      .then((userCredential) => {
+        const destination = location?.state?.from || '/';
+        navigate(destination)
+        setError('');
       })
-      .catch(error => {
-        setError(error.message)
-        setSuccess(false)
+      .catch((error) => {
+        setError(error.message);
       })
-      .finally(setIsLoading(false))
+      .finally(() => setIsLoading(false));
   }
 
   //get current user
@@ -98,6 +107,28 @@ const useFirebase = () => {
       .finally(setIsLoading(false))
   }
 
+  // save user info into database
+  const userInfoSaveDB = (email, displayName, method) => {
+    const user = { email, displayName }
+    fetch('https://secure-falls-75626.herokuapp.com/users', {
+      method: method,
+      headers: {
+        'content-type': 'application/json'
+      }
+      ,
+      body: JSON.stringify(user)
+    })
+      .then()
+
+  }
+
+  // get admin
+  useEffect(() => {
+    fetch(`https://secure-falls-75626.herokuapp.com/users/${user.email}`)
+      .then(res => res.json())
+      .then(data => setAdmin(data.admin))
+  }, [user?.email])
+
   return {
     user,
     error,
@@ -106,7 +137,8 @@ const useFirebase = () => {
     googleSignIn,
     createUser,
     signInUser,
-    singOutUser
+    singOutUser,
+    admin
   }
 }
 

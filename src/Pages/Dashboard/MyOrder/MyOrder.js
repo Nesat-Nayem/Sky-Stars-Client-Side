@@ -14,7 +14,7 @@ const MyOrder = () => {
 
     // get data from database
     useEffect(() => {
-        fetch(`http://localhost:5000/MyOrders/${user.email}`)
+        fetch(`https://secure-falls-75626.herokuapp.com/MyOrders/${user.email}`)
             .then(res => res.json())
             .then(data => setMyOrders(data))
     }, [isDeleted, user])
@@ -26,7 +26,7 @@ const MyOrder = () => {
     const handleDelete = (id) => {
         const proceed = window.confirm('Are you sure to Delete');
         if (proceed) {
-            fetch(`http://localhost:5000/myOrders/order/delete/${id}`, {
+            fetch(`https://secure-falls-75626.herokuapp.com/myOrders/order/delete/${id}`, {
                 method: 'DELETE'
             })
                 .then(res => res.json())
