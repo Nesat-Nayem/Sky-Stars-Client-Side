@@ -50,6 +50,7 @@ const AddProduct = () => {
           id="fullWidth"
           name='name'
           onChange={getServiceData}
+          required
         />
         <TextField
           sx={{ my: 1 }}
@@ -57,14 +58,18 @@ const AddProduct = () => {
           id="fullWidth"
           name='img'
           onChange={getServiceData}
+          required
         />
         <TextField
           sx={{ my: 1 }}
-          fullWidth label="Rating"
+          type='number'
+          fullWidth label="Price"
           id="fullWidth"
-          name='rating'
+          name='price'
           onChange={getServiceData}
+          required
         />
+
         <TextField
           sx={{ my: 1 }}
           rows={4}
@@ -74,6 +79,7 @@ const AddProduct = () => {
           name='desc'
           id="fullWidth"
           onChange={getServiceData}
+          required
         />
         <Button style={styles.primary} type='submit' variant="contained">Add Item</Button>
       </form>
