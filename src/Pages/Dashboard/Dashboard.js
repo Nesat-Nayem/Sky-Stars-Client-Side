@@ -39,6 +39,11 @@ const Dashboard = () => {
       >
         <Toolbar ><Typography sx={{ fontSize: "30px" }}>Dashboard</Typography></Toolbar>
         <List>
+          <NavLink to='/'>
+            <ListItem sx={{ fontSize: "20px", color: "#333" }}>
+              Home
+            </ListItem>
+          </NavLink>
           <NavLink to='orderedproducts'>
             <ListItem sx={{ fontSize: "20px", color: "#333" }}>
               Ordered Products

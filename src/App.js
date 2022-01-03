@@ -15,6 +15,8 @@ import AddProduct from './Pages/Dashboard/AddProduct/AddProduct';
 import AddReview from './Pages/Dashboard/AddReview/AddReview';
 import AllUser from './Pages/Dashboard/AllUser/AllUser';
 import AllProduct from './Pages/Dashboard/AllProduct/AllProduct';
+import PrivateRoute from '../src/PrivateRoute/PrivateRoute';
+import ServiceDetails from './Pages/ServiceDetails/ServiceDetails';
 
 
 function App() {
@@ -26,13 +28,20 @@ function App() {
           <Route path='/home' element={<Home />} />
           <Route path='login' element={<Login />} />
           <Route path='register' element={<Register />} />
-          <Route path='/dashboard' element={<Dashboard />}>
+          <Route path='/dashboard' element={<PrivateRoute>
+            <Dashboard />
+          </PrivateRoute>}>
+            <Route
+              index
+              element={<Orders />}
+            />
             <Route path='orderedproducts' element={<Orders />} />
             <Route path='addservice' element={<AddProduct />} />
             <Route path='addreview' element={<AddReview />} />
             <Route path='alluser' element={<AllUser />} />
             <Route path='allservice' element={<AllProduct />} />
           </Route>
+          <Route path='services/:serviceId' element={<ServiceDetails />} />
           <Route path="*" element={<NotFound />}></Route>
         </Routes>
       </BrowserRouter>
