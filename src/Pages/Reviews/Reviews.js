@@ -39,8 +39,9 @@ const Reviews = () => {
                     reviews.map(review =>
                         <Grid item xs={12} md={4}
                             key={review._id}
+                            className='review-card'
                         >
-                            <Card sx={{ maxWidth: 345 }}>
+                            <Card >
 
                                 <CardMedia
                                     sx={{ width: "90px", height: "90px", borderRadius: "50%", mx: 'auto', p: '1' }}

@@ -21,4 +21,12 @@
     font-size: 40px;
     margin: 70px auto;
 }
+.review-card{
+    border: gray;
+    border-radius: 25px;
+}
+.review-card:hover{
+    box-shadow: 5px 5px 5px gray;
+    padding: 5px;
+}
 
