@@ -33,7 +33,6 @@ const Reviews = () => {
                 We listen. We advise. We design. Together. Our success is measured by results, the most important<br /> being how our clients feel about their experience with us.
             </Typography>
 
-
             <Grid container spacing={2} sx={{ lineHeight: "40px" }}>
                 {
                     reviews.slice(0,3).map(review =>
