@@ -36,7 +36,7 @@ const Reviews = () => {
 
             <Grid container spacing={2} sx={{ lineHeight: "40px" }}>
                 {
-                    reviews.map(review =>
+                    reviews.slice(0,3).map(review =>
                         <Grid item xs={12} md={4}
                             key={review._id}
                             className='review-card'
