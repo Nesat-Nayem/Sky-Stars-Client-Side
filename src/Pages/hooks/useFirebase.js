@@ -10,7 +10,7 @@ const useFirebase = () => {
   const [user, setUser] = useState({})
   const [error, setError] = useState('')
   const [success, setSuccess] = useState(false)
-  const [isLoading, setIsLoading] = useState(false)
+  const [isLoading, setIsLoading] = useState(true)
 
   const googleSignIn = (location, navigate) => {
     setIsLoading(true)
