@@ -50,18 +50,22 @@ const Reviews = () => {
                                     alt="Paella dish"
                                 />
                                 <CardContent >
-                                    <Typography gutterBottom variant="h5" component="div" sx={{ mx: 'auto', p: '1' }}>
+                                    <Typography gutterBottom variant="h5" component="div" sx={{ textAlign: 'center', p: '1' }}>
                                         {review.name}
                                     </Typography>
+
+                                    <Typography variant="body2" color="text.secondary" sx={{ textAlign: 'center', p: '1' }}>
+                                        {review.desc}
+                                    </Typography>
+
+                                    <Typography variant="body2" color="text.secondary" sx={{ textAlign: 'center', p: '1' }}>
                                     <Rating readonly
                                         initialRating={review.rating}
                                         fullSymbol={element1}
                                         emptySymbol={element2}>
-                                        sx={{ mx: 'auto', p: '1' }}
                                     </Rating>
-                                    <Typography variant="body2" color="text.secondary" sx={{ mx: 'auto', p: '1' }}>
-                                        {review.desc}
                                     </Typography>
+                                   
                                 </CardContent>
 
                             </Card>
