@@ -53,7 +53,7 @@ const AddReview = () => {
           onChange={getServiceData}
           name='name'
           autoFocus
-          disabled
+
         />
         <TextField
           sx={{ my: 1 }}
@@ -64,7 +64,7 @@ const AddReview = () => {
           onChange={getServiceData}
           name='email'
           autoFocus
-          disabled
+
         />
         <TextField
           sx={{ my: 1 }}
