@@ -10,7 +10,7 @@ const useFirebase = () => {
   const [user, setUser] = useState({})
   const [error, setError] = useState('')
   const [success, setSuccess] = useState(false)
-  const [isLoading, setIsLoading] = useState(false)
+  const [isLoading, setIsLoading] = useState(true)
   const [admin, setAdmin] = useState(false);
 
 
@@ -118,13 +118,13 @@ const useFirebase = () => {
       ,
       body: JSON.stringify(user)
     })
-      .then()
+      .then(res => res.json())
 
   }
 
   // get admin
   useEffect(() => {
-    fetch(`https://secure-falls-75626.herokuapp.com/users/${user.email}`)
+    fetch(`https://secure-falls-75626.herokuapp.com/users/${user?.email}`)
       .then(res => res.json())
       .then(data => setAdmin(data.admin))
   }, [user?.email])
