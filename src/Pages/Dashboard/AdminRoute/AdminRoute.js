@@ -1,17 +1,21 @@
 import React from 'react';
 import { Navigate, useLocation } from 'react-router-dom';
-import useAuth from '../../../hooks/useAuth';
 import { CircularProgress } from '@mui/material';
+import useAuth from '../../hooks/useAuth';
 
 const AdminRoute = ({ children, ...rest }) => {
-    const { user, admin, isLoading } = useAuth();
+    const { user, isLoading, admin } = useAuth();
     let location = useLocation();
+    console.log(admin)
+
     if (isLoading) {
-        return <CircularProgress />
+        return <div style={{ textAlign: 'center' }}>
+            <CircularProgress color="success" />
+        </div>
     }
 
 
-    if (user.email && admin) {
+    if (user.email) {
         return children;
     }
     return <Navigate to="/login" state={{ from: location }} />;

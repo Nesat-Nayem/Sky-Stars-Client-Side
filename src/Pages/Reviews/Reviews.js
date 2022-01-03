@@ -18,7 +18,7 @@ const Reviews = () => {
 
 
     useEffect(() => {
-        fetch('http://localhost:5000/reviews')
+        fetch('https://secure-falls-75626.herokuapp.com/reviews')
             .then(res => res.json())
             .then(data => setReviews(data));
     }, [])
@@ -35,7 +35,7 @@ const Reviews = () => {
 
             <Grid container spacing={2} sx={{ lineHeight: "40px" }}>
                 {
-                    reviews.slice(0,3).map(review =>
+                    reviews.slice(0, 3).map(review =>
                         <Grid item xs={12} md={4}
                             key={review._id}
                             className='review-card'
@@ -58,13 +58,13 @@ const Reviews = () => {
                                     </Typography>
 
                                     <Typography variant="body2" color="text.secondary" sx={{ textAlign: 'center', p: '1' }}>
-                                    <Rating readonly
-                                        initialRating={review.rating}
-                                        fullSymbol={element1}
-                                        emptySymbol={element2}>
-                                    </Rating>
+                                        <Rating readonly
+                                            initialRating={review.rating}
+                                            fullSymbol={element1}
+                                            emptySymbol={element2}>
+                                        </Rating>
                                     </Typography>
-                                   
+
                                 </CardContent>
 
                             </Card>

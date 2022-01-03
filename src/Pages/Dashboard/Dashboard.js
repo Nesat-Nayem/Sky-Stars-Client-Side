@@ -15,7 +15,7 @@ import useAuth from '../hooks/useAuth';
 
 const drawerWidth = 240;
 const Dashboard = (props) => {
-  const { singOutUser } = useAuth()
+  const { singOutUser, admin } = useAuth()
   const { window } = props;
   const [mobileOpen, setMobileOpen] = React.useState(false);
 
@@ -28,36 +28,45 @@ const Dashboard = (props) => {
       <Toolbar />
       <Divider />
       <List>
-        <NavLink to='MyOrder'>
-          <ListItem sx={{ fontSize: "20px", color: "#333" }}>
-            My Order
-          </ListItem>
-        </NavLink>
-        <NavLink to='AllOrder'>
-          <ListItem sx={{ fontSize: "20px", color: "#333" }}>
-            All Order
-          </ListItem>
-        </NavLink>
-        <NavLink to='addservice'>
-          <ListItem sx={{ fontSize: "20px", color: "#333" }}>
-            Add Service
-          </ListItem>
-        </NavLink>
-        <NavLink to='addreview'>
-          <ListItem sx={{ fontSize: "20px", color: "#333" }}>
-            Add Review
-          </ListItem>
-        </NavLink>
-        <NavLink to='alluser'>
-          <ListItem sx={{ fontSize: "20px", color: "#333" }}>
-            All Users
-          </ListItem>
-        </NavLink>
-        <NavLink to='allservice'>
-          <ListItem sx={{ fontSize: "20px", color: "#333" }}>
-            All Services
-          </ListItem>
-        </NavLink>
+        {
+          admin ?
+            <Box>
+              <NavLink to='AllOrder'>
+                <ListItem sx={{ fontSize: "20px", color: "#333" }}>
+                  All Order
+                </ListItem>
+              </NavLink>
+              <NavLink to='addservice'>
+                <ListItem sx={{ fontSize: "20px", color: "#333" }}>
+                  Add Service
+                </ListItem>
+              </NavLink>
+
+              <NavLink to='adAdmin'>
+                <ListItem sx={{ fontSize: "20px", color: "#333" }}>
+                  Add An Admin
+                </ListItem>
+              </NavLink>
+              <NavLink to='allservice'>
+                <ListItem sx={{ fontSize: "20px", color: "#333" }}>
+                  All Services
+                </ListItem>
+              </NavLink>
+            </Box>
+            :
+            <Box>
+              <NavLink to='MyOrder'>
+                <ListItem sx={{ fontSize: "20px", color: "#333" }}>
+                  My Order
+                </ListItem>
+              </NavLink>
+              <NavLink to='addreview'>
+                <ListItem sx={{ fontSize: "20px", color: "#333" }}>
+                  Add Review
+                </ListItem>
+              </NavLink>
+            </Box>
+        }
 
         <Box sx={{ marginLeft: '15px' }}>
           <Link to='/'>
