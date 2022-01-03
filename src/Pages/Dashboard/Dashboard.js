@@ -23,6 +23,8 @@ const Dashboard = (props) => {
     setMobileOpen(!mobileOpen);
   };
 
+  console.log(admin)
+
   const drawer = (
     <div>
       <Toolbar />
