@@ -73,10 +73,10 @@ const CheckoutForm = ({ payment }) => {
             setError(intentError.message)
         }
         else {
+            setProcessing(false)
             setSuccess("Your Payment Successfully")
             setError('')
             // console.log(paymentIntent);
-            setProcessing(false)
 
            
 
@@ -105,14 +105,14 @@ const CheckoutForm = ({ payment }) => {
                         },
                     }}
                 />
-                {processing ?
+                {/* {processing ?
                     <CircularProgress color="success" />
 
-                    :
+                    : */}
                 <Button type="submit" disabled={!stripe} variant='contained' sx={{ margin: '5px' }}>
                     Pay ${price}
                 </Button>
-               }
+               {/* } */}
             </form>
             {
                 error && <Typography variant='h6' sx={{ color: 'red' }}>{error}</Typography>
