@@ -1,6 +1,7 @@
 
 import { Button, Container, Paper, Table, TableBody, TableCell, TableContainer, TableHead, TableRow } from '@mui/material';
 import React, { useEffect, useState } from 'react';
+import { Link } from 'react-router-dom';
 import useAuth from '../../hooks/useAuth';
 
 const MyOrder = () => {
@@ -59,6 +60,7 @@ const MyOrder = () => {
                             <TableCell>Price</TableCell>
                             <TableCell>Status</TableCell>
                             <TableCell >Action</TableCell>
+                            <TableCell >Payment</TableCell>
                         </TableRow>
                     </TableHead>
                     <TableBody>
@@ -75,6 +77,11 @@ const MyOrder = () => {
                                 <TableCell> {order.serviceName} </TableCell>
                                 <TableCell> {order.price} </TableCell>
                                 <TableCell> {order.status} </TableCell>
+                                <TableCell> {order.payment ? "Paid" :
+                                    <Link to={`/dashboard/MyOrders/${order._id}`}>
+                                        <Button>Pay</Button>
+                                    </Link>}
+                                </TableCell>
                                 <TableCell>
                                     <Button
                                         onClick={() => handleDelete(order?._id)}
