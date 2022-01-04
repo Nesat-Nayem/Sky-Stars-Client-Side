@@ -43,7 +43,7 @@ const AdAdmin = () => {
 
     return (
         <Box>
-            <Typography sx={{ mb: 2 }} variant='h4' >Add A Service</Typography>
+            <Typography sx={{ mb: 2 }} variant='h4' >Add An Admin</Typography>
 
             <div style={{ textAlign: 'center' }}>
                 {success &&
@@ -64,7 +64,7 @@ const AdAdmin = () => {
 
                     required
                 />
-                <Button style={styles.primary} type='submit' variant="contained">Add Item</Button>
+                <Button style={styles.primary} type='submit' variant="contained">Add</Button>
             </form>
         </Box>
     );
