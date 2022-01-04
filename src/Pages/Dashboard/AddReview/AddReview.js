@@ -1,4 +1,4 @@
-import { Button, TextField, Typography } from '@mui/material';
+import { Alert, Button, TextField, Typography } from '@mui/material';
 import { Box } from '@mui/system';
 import React, { useState } from 'react';
 import { useDispatch } from 'react-redux';
@@ -23,6 +23,7 @@ const AddReview = () => {
   const dispatch = useDispatch()
 
   const [data, setData] = useState({})
+  const [success, setSuccess] = useState('');
 
 
   const getServiceData = (e) => {
@@ -40,10 +41,15 @@ const AddReview = () => {
     console.log(data)
     dispatch(getAddedReview(data))
     e.target.reset()
+
   }
   return (
     <Box>
       <Typography sx={{ mb: 2 }} variant='h4' >Add A Review</Typography>
+      {
+        success &&
+        <Alert severity="success">{success}</Alert>
+      }
       <form onSubmit={handleSubmit} style={{ width: "90%", maxWidth: "500px" }}>
         <TextField
           sx={{ my: 1 }}
@@ -53,7 +59,7 @@ const AddReview = () => {
           onChange={getServiceData}
           name='name'
           autoFocus
-          disabled
+
         />
         <TextField
           sx={{ my: 1 }}
@@ -64,7 +70,7 @@ const AddReview = () => {
           onChange={getServiceData}
           name='email'
           autoFocus
-          disabled
+
         />
         <TextField
           sx={{ my: 1 }}

@@ -10,13 +10,16 @@ import Register from './Pages/Login/Register/Register';
 import { AuthProvider } from './AuthProvider/AuthProvider';
 import NotFound from './Pages/NotFound/NotFound';
 import Dashboard from './Pages/Dashboard/Dashboard';
-import Orders from './Pages/Dashboard/Orders/Orders';
 import AddProduct from './Pages/Dashboard/AddProduct/AddProduct';
 import AddReview from './Pages/Dashboard/AddReview/AddReview';
-import AllUser from './Pages/Dashboard/AllUser/AllUser';
+import AdAdmin from './Pages/Dashboard/AdAdmin/AdAdmin';
 import AllProduct from './Pages/Dashboard/AllProduct/AllProduct';
 import PrivateRoute from '../src/PrivateRoute/PrivateRoute';
 import ServiceDetails from './Pages/ServiceDetails/ServiceDetails';
+import DefaultDashboard from './Pages/Dashboard/DefaultDashboard';
+import AllOrders from './Pages/Dashboard/AllOrders/AllOrders';
+import MyOrder from './Pages/Dashboard/MyOrder/MyOrder';
+import AdminRoute from './Pages/Dashboard/AdminRoute/AdminRoute';
 
 
 function App() {
@@ -28,19 +31,21 @@ function App() {
           <Route path='/home' element={<Home />} />
           <Route path='login' element={<Login />} />
           <Route path='register' element={<Register />} />
-          <Route path='/dashboard' element={<PrivateRoute>
-            <Dashboard />
-          </PrivateRoute>}>
-            <Route
-              index
-              element={<Orders />}
-            />
-            <Route path='orderedproducts' element={<Orders />} />
-            <Route path='addservice' element={<AddProduct />} />
+
+          <Route path='/dashboard' element={<PrivateRoute><Dashboard /></PrivateRoute>}>
+
+            <Route exact path='/dashboard' element={<DefaultDashboard />}></Route >
+
+            <Route path='MyOrder' element={<MyOrder />} />
             <Route path='addreview' element={<AddReview />} />
-            <Route path='alluser' element={<AllUser />} />
-            <Route path='allservice' element={<AllProduct />} />
+
+            <Route path='addservice' element={<AdminRoute><AddProduct /></AdminRoute>} />
+            <Route path='AllOrder' element={<AdminRoute><AllOrders /></AdminRoute>} />
+            <Route path='adAdmin' element={<AdminRoute><AdAdmin /></AdminRoute>} />
+            <Route path='allservice' element={<AdminRoute><AllProduct /></AdminRoute>} />
+
           </Route>
+
           <Route path='services/:serviceId' element={<ServiceDetails />} />
           <Route path="*" element={<NotFound />}></Route>
         </Routes>
