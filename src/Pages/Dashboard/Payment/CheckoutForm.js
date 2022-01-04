@@ -12,7 +12,7 @@ const CheckoutForm = ({ payment }) => {
     const [error, setError] = useState('')
     const [clientSecret, setClientSecret] = useState('')
     const [success, setSuccess] = useState('')
-    const [processing, setProcessing] = useState(false)
+    // const [processing, setProcessing] = useState(true)
     const { user } = useAuth()
 
     useEffect(() => {
@@ -41,7 +41,7 @@ const CheckoutForm = ({ payment }) => {
         if (card === null) {
             return;
         }
-        setProcessing(true)
+        // setProcessing(true)
         const { error, paymentMethod } = await stripe.createPaymentMethod({
             type: 'card',
             card
@@ -76,25 +76,24 @@ const CheckoutForm = ({ payment }) => {
             setSuccess("Your Payment Successfully")
             setError('')
             // console.log(paymentIntent);
-            setProcessing(false)
+            // setProcessing(false)
 
             // save user 
-            //     const payment = {
-            //         amount: paymentIntent.amount,
-            //         transaction: paymentIntent.client_secret.slice('_secret')[0],
-            //         last4: paymentMethod.card.last4,
-            //         action: paymentIntent.status
-            //     }
-            //     const url = `http://localhost:5000/allOrders/${_id}`
-            //     fetch(url, {
-            //         method: "POST",
-            //         headers: {
-            //             "content-type": "application/json"
-            //         },
-            //         body: JSON.stringify(payment)
-            //     })
-            //         .then(res => res.json())
-            //         .then(data => console.log(data))
+        //         const payment = {
+        //             amount: paymentIntent.amount,
+        //             last4: paymentMethod.card.last4,
+        //             action: paymentIntent.status
+        //         }
+        //         const url = `http://localhost:5000/payment/${_id}`
+        //         fetch(url, {
+        //             method: "PUT",
+        //             headers: {
+        //                 "content-type": "application/json"
+        //             },
+        //             body: JSON.stringify(payment)
+        //         })
+        //             .then(res => res.json())
+        //             .then(data => console.log(data))
         }
 
     }
@@ -120,14 +119,14 @@ const CheckoutForm = ({ payment }) => {
                         },
                     }}
                 />
-                {processing ?
+                {/* {processing ?
                     <CircularProgress color="success" />
 
                     :
+              }  */}
                     <Button type="submit" disabled={!stripe} variant='contained' sx={{ margin: '5px' }}>
                         Pay ${price}
                     </Button>
-                }
             </form>
             {
                 error && <Typography variant='h6' sx={{ color: 'red' }}>{error}</Typography>
