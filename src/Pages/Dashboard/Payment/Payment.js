@@ -14,6 +14,7 @@ const stripePromise = loadStripe('pk_test_51JwCt5Hck8KbGWQKzdsGm8EV0mQygETYpOCGo
 const Payment = () => {
     const { paymentID } = useParams()
     const [payment, setPayment] = useState({});
+    console.log(paymentID)
     const { isLoading } = useAuth()
     useEffect(() => {
         fetch(`http://localhost:5000/payment/${paymentID}`)
@@ -29,16 +30,16 @@ const Payment = () => {
             <p>Total amount: ${payment?.price}</p>
             <p>Payment Date: {payment?.date}</p>
 
-            {
+            {/* {
                 isLoading && 
-                
+                 */}
                 <Elements stripe={stripePromise}>
                     <CheckoutForm
                         payment={payment}
                     />
                 </Elements>
 
-             } 
+             {/* }  */}
 
 
         </Container>
