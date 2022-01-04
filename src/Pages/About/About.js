@@ -9,7 +9,7 @@ const About = () => {
 
 
   return (
-    <div maxwidth="sm" sx={{ flexGrow: 1 }}>
+    <div maxwidth="sm" id='about' sx={{ flexGrow: 1 }}>
 
       <Container className='about-section' >
         <Grid container spacing={2} >

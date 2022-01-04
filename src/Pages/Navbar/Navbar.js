@@ -3,6 +3,7 @@ import './Navbar.css'
 import { NavLink } from 'react-router-dom';
 import { FaBars } from 'react-icons/fa'
 import useAuth from '../hooks/useAuth';
+import { HashLink } from 'react-router-hash-link';
 
 const Navbar = () => {
   const [isShow, setIsShow] = useState(false)
@@ -19,10 +20,13 @@ const Navbar = () => {
               <NavLink to='/'>Home</NavLink>
             </li>
             <li>
-              <NavLink to='/'>Service</NavLink>
+              <HashLink to='/home#services'>Service</HashLink>
             </li>
             <li>
-              <NavLink to='/'>About</NavLink>
+              <HashLink to='/home#about'>About</HashLink>
+            </li>
+            <li>
+              <HashLink to='/home#contact'>Contact</HashLink>
             </li>
             <li>
               <NavLink to='/dashboard'>Dashboard</NavLink>
