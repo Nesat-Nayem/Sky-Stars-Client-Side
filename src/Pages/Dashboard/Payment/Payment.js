@@ -17,7 +17,7 @@ const Payment = () => {
     console.log(paymentID)
     const { isLoading } = useAuth()
     useEffect(() => {
-        fetch(`http://localhost:5000/payment/${paymentID}`)
+        fetch(`https://secure-falls-75626.herokuapp.com/payment/${paymentID}`)
             .then(res => res.json())
             .then(data => setPayment(data))
     }, [paymentID])
@@ -33,13 +33,13 @@ const Payment = () => {
             {/* {
                 isLoading && 
                  */}
-                <Elements stripe={stripePromise}>
-                    <CheckoutForm
-                        payment={payment}
-                    />
-                </Elements>
+            <Elements stripe={stripePromise}>
+                <CheckoutForm
+                    payment={payment}
+                />
+            </Elements>
 
-             {/* }  */}
+            {/* }  */}
 
 
         </Container>

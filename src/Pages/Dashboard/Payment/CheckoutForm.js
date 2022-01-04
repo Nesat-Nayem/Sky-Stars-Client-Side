@@ -16,7 +16,7 @@ const CheckoutForm = ({ payment }) => {
     const { user } = useAuth()
 
     useEffect(() => {
-        fetch('http://localhost:5000/create-payment-intent', {
+        fetch('https://secure-falls-75626.herokuapp.com/create-payment-intent', {
             method: "POST",
             headers: {
                 "content-type": "application/json"
@@ -78,7 +78,7 @@ const CheckoutForm = ({ payment }) => {
             setError('')
             // console.log(paymentIntent);
 
-           
+
 
         }
 
@@ -112,7 +112,7 @@ const CheckoutForm = ({ payment }) => {
                 <Button type="submit" disabled={!stripe} variant='contained' sx={{ margin: '5px' }}>
                     Pay ${price}
                 </Button>
-               {/* } */}
+                {/* } */}
             </form>
             {
                 error && <Typography variant='h6' sx={{ color: 'red' }}>{error}</Typography>

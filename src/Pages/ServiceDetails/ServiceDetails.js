@@ -122,7 +122,7 @@ const ServiceDetails = () => {
                   onChange={getServiceData}
                   name='date'
                 />
-                <Button style={styles.primary} type='submit' variant="contained">Add Review</Button>
+                <Button style={styles.primary} type='submit' variant="contained">Confirm Order</Button>
               </form>
             </Grid>
           </Grid>
