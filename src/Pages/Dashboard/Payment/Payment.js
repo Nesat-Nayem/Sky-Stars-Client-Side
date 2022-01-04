@@ -3,6 +3,8 @@ import { useParams } from 'react-router-dom';
 import { loadStripe } from '@stripe/stripe-js';
 import { Elements } from '@stripe/react-stripe-js';
 import CheckoutForm from './CheckoutForm';
+import useAuth from '../../hooks/useAuth';
+import { Container } from '@mui/material';
 
 
 
@@ -12,8 +14,7 @@ const stripePromise = loadStripe('pk_test_51JwCt5Hck8KbGWQKzdsGm8EV0mQygETYpOCGo
 const Payment = () => {
     const { paymentID } = useParams()
     const [payment, setPayment] = useState({});
-    // console.log(payment);
-
+    const { isLoading } = useAuth()
     useEffect(() => {
         fetch(`http://localhost:5000/payment/${paymentID}`)
             .then(res => res.json())
@@ -21,20 +22,26 @@ const Payment = () => {
     }, [paymentID])
 
     return (
-        <div>
+        <Container>
 
             <h2>User Name: {payment?.name}</h2>
             <h5>Payment For: {payment?.serviceName} service</h5>
             <p>Total amount: ${payment?.price}</p>
             <p>Payment Date: {payment?.date}</p>
 
-            <Elements stripe={stripePromise}>
-                <CheckoutForm 
-                    payment={payment}
-                />
-            </Elements>
+            {
+                isLoading && 
+                
+                <Elements stripe={stripePromise}>
+                    <CheckoutForm
+                        payment={payment}
+                    />
+                </Elements>
 
-        </div>
+             } 
+
+
+        </Container>
     );
 };
 

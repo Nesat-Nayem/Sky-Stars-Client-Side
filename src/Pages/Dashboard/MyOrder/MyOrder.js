@@ -20,7 +20,7 @@ const MyOrder = () => {
             .then(data => setMyOrders(data))
     }, [isDeleted, user])
 
-    console.log(myOrders)
+    // console.log(myOrders)
 
 
     // delete

@@ -1,9 +1,9 @@
 import React from 'react';
 import { CardElement, useElements, useStripe } from '@stripe/react-stripe-js';
+import { Button, CircularProgress, Typography } from '@mui/material';
 import { useEffect } from 'react';
 import { useState } from 'react';
 import useAuth from '../../hooks/useAuth';
-import { Button, Typography } from '@mui/material';
 
 const CheckoutForm = ({ payment }) => {
     const { price, name, _id } = payment
@@ -15,18 +15,18 @@ const CheckoutForm = ({ payment }) => {
     const [processing, setProcessing] = useState(false)
     const { user } = useAuth()
 
-    // useEffect(() => {
-    //     fetch('http://localhost:5000/create-payment-intent', {
-    //         method: "POST",
-    //         headers: {
-    //             "content-type": "application/json"
-    //         },
-    //         body: JSON.stringify({ price })
-    //     })
-    //         .then(res => res.json())
-    //         .then(data => setClientSecret(data.clientSecret))
+    useEffect(() => {
+        fetch('http://localhost:5000/create-payment-intent', {
+            method: "POST",
+            headers: {
+                "content-type": "application/json"
+            },
+            body: JSON.stringify({ price })
+        })
+            .then(res => res.json())
+            .then(data => setClientSecret(data.clientSecret))
 
-    // }, [price])
+    }, [price])
 
 
 
@@ -41,62 +41,61 @@ const CheckoutForm = ({ payment }) => {
         if (card === null) {
             return;
         }
-        // setProcessing(true)
+        setProcessing(true)
         const { error, paymentMethod } = await stripe.createPaymentMethod({
             type: 'card',
             card
         })
 
         if (error) {
-            // console.log(error)
             setError(error.message);
             setSuccess('')
         }
-        // else {
-        //     setError('')
-        //     console.log(paymentMethod);
-        // }
+        else {
+            setError('')
+            console.log(paymentMethod);
+        }
 
-        // // payment intent 
-        // const { paymentIntent, error: intentError } = await stripe.confirmCardPayment(
-        //     clientSecret,
-        //     {
-        //         payment_method: {
-        //             card: card,
-        //             billing_details: {
-        //                 name: name,
-        //                 email: user.email
-        //             },
-        //         },
-        //     },
-        // );
-        // if (intentError) {
-        //     setError(intentError.massage)
-        // }
-        // else {
-        //     setSuccess("Your payment Successfully")
-        //     setError('')
-        //     console.log(paymentIntent);
-        //     setProcessing(false)
+        // payment intent 
+        const { paymentIntent, error: intentError } = await stripe.confirmCardPayment(
+            clientSecret,
+            {
+                payment_method: {
+                    card: card,
+                    billing_details: {
+                        name: name,
+                        email: user.email
+                    },
+                },
+            },
+        );
+        if (intentError) {
+            setError(intentError.message)
+        }
+        else {
+            setSuccess("Your Payment Successfully")
+            setError('')
+            // console.log(paymentIntent);
+            setProcessing(false)
 
-        //     // save user 
-        //     const payment = {
-        //         amount: paymentIntent.amount,
-        //         transaction: paymentIntent.client_secret.slice('_secret')[0],
-        //         last4: paymentMethod.card.last4,
-        //         action: paymentIntent.status
-        //     }
-        //     const url = `http://localhost:5000/allOrders/${_id}`
-        //     fetch(url, {
-        //         method: "POST",
-        //         headers: {
-        //             "content-type": "application/json"
-        //         },
-        //         body: JSON.stringify(payment)
-        //     })
-        //         .then(res => res.json())
-        //         .then(data => console.log(data))
-        // }
+            // save user 
+            //     const payment = {
+            //         amount: paymentIntent.amount,
+            //         transaction: paymentIntent.client_secret.slice('_secret')[0],
+            //         last4: paymentMethod.card.last4,
+            //         action: paymentIntent.status
+            //     }
+            //     const url = `http://localhost:5000/allOrders/${_id}`
+            //     fetch(url, {
+            //         method: "POST",
+            //         headers: {
+            //             "content-type": "application/json"
+            //         },
+            //         body: JSON.stringify(payment)
+            //     })
+            //         .then(res => res.json())
+            //         .then(data => console.log(data))
+        }
 
     }
 
@@ -104,7 +103,7 @@ const CheckoutForm = ({ payment }) => {
 
     return (
         <div>
-            <form onSubmit={handleSubmit}>
+            <form onSubmit={handleSubmit} >
                 <CardElement
                     options={{
                         style: {
@@ -121,13 +120,20 @@ const CheckoutForm = ({ payment }) => {
                         },
                     }}
                 />
-                <Button type="submit" disabled={!stripe}>
-                    Pay
-                </Button>
-            </form>
+                {processing ?
+                    <CircularProgress color="success" />
 
+                    :
+                    <Button type="submit" disabled={!stripe} variant='contained' sx={{ margin: '5px' }}>
+                        Pay ${price}
+                    </Button>
+                }
+            </form>
             {
-                error && <Typography variant='h6' style={{color:"red"}}>{error}</Typography>
+                error && <Typography variant='h6' sx={{ color: 'red' }}>{error}</Typography>
+            }
+            {
+                success && <Typography variant='h6' sx={{ color: 'green' }}>{success}</Typography>
             }
         </div>
     );

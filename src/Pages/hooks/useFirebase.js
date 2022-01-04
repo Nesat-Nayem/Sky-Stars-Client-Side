@@ -10,7 +10,7 @@ const useFirebase = () => {
   const [user, setUser] = useState({})
   const [error, setError] = useState('')
   const [success, setSuccess] = useState(false)
-  const [isLoading, setIsLoading] = useState(false)
+  const [isLoading, setIsLoading] = useState(true)
   const [admin, setAdmin] = useState(false);
 
 
@@ -31,7 +31,7 @@ const useFirebase = () => {
         setError(error.message)
         setSuccess(false)
       })
-      .finally(setIsLoading(false))
+      .finally(() => setIsLoading(false));
   }
 
   ///get user name
@@ -62,7 +62,7 @@ const useFirebase = () => {
         setError(error.message)
         setSuccess(false)
       })
-      .finally(setIsLoading(false))
+      .finally(() => setIsLoading(false));
   }
 
   //sing In user with passwod
@@ -104,7 +104,7 @@ const useFirebase = () => {
       .catch(error => {
         setError(error.message)
       })
-      .finally(setIsLoading(false))
+      .finally(() => setIsLoading(false));
   }
 
   // save user info into database
