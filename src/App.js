@@ -20,6 +20,7 @@ import DefaultDashboard from './Pages/Dashboard/DefaultDashboard';
 import AllOrders from './Pages/Dashboard/AllOrders/AllOrders';
 import MyOrder from './Pages/Dashboard/MyOrder/MyOrder';
 import AdminRoute from './Pages/Dashboard/AdminRoute/AdminRoute';
+import Payment from './Pages/Dashboard/Payment/Payment';
 
 
 function App() {
@@ -37,6 +38,8 @@ function App() {
             <Route exact path='/dashboard' element={<DefaultDashboard />}></Route >
 
             <Route path='MyOrder' element={<MyOrder />} />
+            <Route path={`/dashboard/MyOrders/:paymentID`} element={<Payment></Payment>}>
+            </Route>
             <Route path='addreview' element={<AddReview />} />
 
             <Route path='addservice' element={<AdminRoute><AddProduct /></AdminRoute>} />
