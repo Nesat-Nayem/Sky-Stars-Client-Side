@@ -18,6 +18,7 @@ import banner4 from '../../images/banner/4.jpg'
 import SwiperCore, {
   EffectFade, Navigation, Autoplay
 } from 'swiper';
+import { HashLink } from 'react-router-hash-link';
 SwiperCore.use([EffectFade, Navigation, Autoplay]);
 export { banner1, banner2, banner3, banner4 }
 const styles = {
@@ -57,8 +58,12 @@ const Slider = () => {
           <div className='slider-text'>
             <h1>Get a Great Refreshment By Visiting <br /> <span>The Sky Star</span></h1>
             <div style={{ marginTop: "20px" }} className="hero-btn">
-              <Button style={styles.primary} variant="contained">Book Now</Button>
-              <Button style={styles.root} variant="contained">Contact</Button>
+              <HashLink to='/home#services'>
+                <Button style={styles.primary} variant="contained">Book Now</Button>
+              </HashLink>
+              <HashLink to='/home#contact'>
+                <Button style={styles.root} variant="contained">Contact</Button>
+              </HashLink>
             </div>
           </div>
         </SwiperSlide>
@@ -67,7 +72,9 @@ const Slider = () => {
           <div className='slider-text'>
             <h1>Our client eticfaction is Our <br /> <span>Achivement</span></h1>
             <div style={{ marginTop: "20px" }} className="hero-btn">
-              <Button style={styles.root} variant="contained">Contact</Button>
+              <HashLink to='/home#contact'>
+                <Button style={styles.root} variant="contained">Contact</Button>
+              </HashLink>
             </div>
           </div>
         </SwiperSlide>
@@ -76,8 +83,12 @@ const Slider = () => {
           <div className='slider-text'>
             <h1>Get a Great Refreshment By Visiting <br /> <span>The Sky Star</span></h1>
             <div style={{ marginTop: "20px" }} className="hero-btn">
-              <Button style={styles.primary} variant="contained">Book Now</Button>
-              <Button style={styles.root} variant="contained">Contact</Button>
+              <HashLink to='/home#services'>
+                <Button style={styles.primary} variant="contained">Book Now</Button>
+              </HashLink>
+              <HashLink to='/home#contact'>
+                <Button style={styles.root} variant="contained">Contact</Button>
+              </HashLink>
             </div>
           </div>
         </SwiperSlide>
@@ -86,7 +97,9 @@ const Slider = () => {
           <div className='slider-text'>
             <h1>Our client eticfaction is Our <br /> <span>Achivement</span></h1>
             <div style={{ marginTop: "20px" }} className="hero-btn">
-              <Button style={styles.root} variant="contained">Contact</Button>
+              <HashLink to='/home#contact'>
+                <Button style={styles.root} variant="contained">Contact</Button>
+              </HashLink>
             </div>
           </div>
         </SwiperSlide>

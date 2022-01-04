@@ -17,7 +17,7 @@ const Services = () => {
     dispatch(getLoadedService(services))
   }, [])
   return (
-    <Container>
+    <Container id='services'>
       <Typography sx={{ textAlign: "center", my: 5 }} variant='h3'>Our Services</Typography>
       <Grid container rowSpacing={1} columnSpacing={{ xs: 1, sm: 2, md: 3 }}>
         {
